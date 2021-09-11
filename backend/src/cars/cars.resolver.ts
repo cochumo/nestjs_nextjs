@@ -1,4 +1,4 @@
-import { Resolver, Query, Args } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { Car } from './car';
 
 const carTable = [
@@ -27,5 +27,12 @@ export class CarsResolver {
   @Query(() => [Car])
   async cars(): Promise<Car[]> {
     return carTable;
+  }
+
+  @Query(() => Car)
+  async getCar(
+    @Args({ name: 'id', type: () => Int }) id: number,
+  ): Promise<Car> {
+    return carTable[id - 1];
   }
 }
