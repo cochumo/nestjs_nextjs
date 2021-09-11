@@ -1,4 +1,8 @@
 {
     "git.ignoreLimitWarning": true,
-    "eslint.workingDirectories": [ "./backend" ]
+    "eslint.workingDirectories": [ "./backend" ],
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
 }
