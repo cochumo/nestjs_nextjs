@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@nestjs/graphql": "^9.0.4",
+    "apollo-server-express": "^3.3.0",
+    "graphql-tools": "^8.2.0"
+  }
+}
