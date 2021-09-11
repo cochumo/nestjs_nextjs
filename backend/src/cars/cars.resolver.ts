@@ -18,7 +18,7 @@ const carTable = [
 
 @Resolver('Cars')
 export class CarsResolver {
-  @Query(returns => [Car])
+  @Query(() => [Car])
   async cars(): Promise<Car[]> {
     return carTable;
   }
