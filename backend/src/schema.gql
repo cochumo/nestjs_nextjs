@@ -4,7 +4,9 @@
 
 type Car {
   id: ID!
-  title: String!
+  brand: String!
+  carName: String!
+  category: String!
 }
 
 type Query {

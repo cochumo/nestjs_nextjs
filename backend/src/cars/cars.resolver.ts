@@ -4,15 +4,21 @@ import { Car } from './car';
 const carTable = [
   {
     id: '1',
-    title: '鯖の味噌煮',
+    brand: 'Alfa Romeo',
+    carName: '4C Gr.3',
+    category: 'Gr.3',
   },
   {
     id: '2',
-    title: 'ミートソーススパゲティ',
+    brand: 'BMW',
+    carName: 'BMW M3 Coupé',
+    category: 'N 400',
   },
   {
     id: '3',
-    title: '豚の生姜焼',
+    brand: 'Ferrari',
+    carName: 'LaFerrari',
+    category: 'N1000',
   },
 ];
 

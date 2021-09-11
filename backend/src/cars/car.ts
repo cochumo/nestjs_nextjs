@@ -6,5 +6,11 @@ export class Car {
   id: string;
 
   @Field()
-  title: string;
+  brand: string;
+
+  @Field()
+  carName: string;
+
+  @Field()
+  category: string;
 }
