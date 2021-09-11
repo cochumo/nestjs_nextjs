@@ -3,19 +3,19 @@ import { Car } from './car';
 
 const carTable = [
   {
-    id: '1',
+    id: 1,
     brand: 'Alfa Romeo',
     carName: '4C Gr.3',
     category: 'Gr.3',
   },
   {
-    id: '2',
+    id: 2,
     brand: 'BMW',
     carName: 'BMW M3 Coupé',
     category: 'N 400',
   },
   {
-    id: '3',
+    id: 3,
     brand: 'Ferrari',
     carName: 'LaFerrari',
     category: 'N1000',

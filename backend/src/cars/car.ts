@@ -3,7 +3,7 @@ import { Field, ID, ObjectType } from '@nestjs/graphql';
 @ObjectType()
 export class Car {
   @Field(() => ID)
-  id: string;
+  id: number;
 
   @Field()
   brand: string;
@@ -13,4 +13,7 @@ export class Car {
 
   @Field()
   category: string;
+
+  @Field({ nullable: true })
+  memo?: string;
 }
