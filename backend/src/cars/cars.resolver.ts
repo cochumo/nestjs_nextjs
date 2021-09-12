@@ -1,38 +1,34 @@
-import { Resolver, Query, Args, Int } from '@nestjs/graphql';
+import { NotFoundException } from '@nestjs/common';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Car } from './car';
+import { CarsService } from './cars.service';
+import { NewCarInput } from './dto/newCar.input';
 
-const carTable = [
-  {
-    id: 1,
-    brand: 'Alfa Romeo',
-    carName: '4C Gr.3',
-    category: 'Gr.3',
-  },
-  {
-    id: 2,
-    brand: 'BMW',
-    carName: 'BMW M3 Coupé',
-    category: 'N 400',
-  },
-  {
-    id: 3,
-    brand: 'Ferrari',
-    carName: 'LaFerrari',
-    category: 'N1000',
-  },
-];
-
-@Resolver('Cars')
+@Resolver((of) => Car)
 export class CarsResolver {
-  @Query(() => [Car])
-  async cars(): Promise<Car[]> {
-    return carTable;
+  constructor(private carsService: CarsService) {}
+
+  @Query((returns) => [Car])
+  cars(): Promise<Car[]> {
+    return this.carsService.findAll();
   }
 
-  @Query(() => Car)
-  async getCar(
-    @Args({ name: 'id', type: () => Int }) id: number,
-  ): Promise<Car> {
-    return carTable[id - 1];
+  @Query((returns) => Car)
+  async getCar(@Args({ name: 'id', type: () => Int }) id: number) {
+    const car = await this.carsService.findOneById(id);
+    if (!car) {
+      throw new NotFoundException(id);
+    }
+    return car;
+  }
+
+  @Mutation((returns) => Car)
+  addCar(@Args('newCar') newCar: NewCarInput): Promise<Car> {
+    return this.carsService.create(newCar);
+  }
+
+  @Mutation((returns) => Boolean)
+  async removeCar(@Args({ name: 'id', type: () => Int }) id: number) {
+    return this.carsService.remove(id);
   }
 }
