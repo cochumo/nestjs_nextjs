@@ -16,4 +16,7 @@ export class Car {
 
   @Field({ nullable: true })
   memo?: string;
+
+  @Field()
+  createdAt: Date;
 }
