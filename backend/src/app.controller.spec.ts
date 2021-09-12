@@ -15,8 +15,10 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "Hello World! and note"', () => {
+      expect(appController.getHello()).toBe(
+        'Hello World!<br />Hi.If you want to try this API, go to /graphql!',
+      );
     });
   });
 });
